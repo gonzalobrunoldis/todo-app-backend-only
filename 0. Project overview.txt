@@ -1,0 +1,273 @@
+# 🧠 **VISIÓN GENERAL DEL PROYECTO FINAL**
+
+Vas a construir:
+
+**Una TODO app completa**, con:
+
+* 🔵 **Frontend** (HTML + JS)
+* 🟣 **Backend** (FastAPI)
+* 🟡 **Base de datos** (Supabase / PostgreSQL)
+* 🟤 **Autenticación** (JWT o Supabase Auth)
+* 🟠 **Deploy** (backend en la nube + opcional Docker)
+
+---
+
+# 📘 **Ruta dividida por lecciones (super clara y progresiva)**
+
+---
+
+# 🟦 **LECCIÓN 1 — Arquitectura & Componentes del Sistema**
+
+**Objetivo:** entender cómo se conectan las piezas antes de tocar código.
+
+**Temas concretos:**
+
+* ¿Qué es frontend? (HTML/CSS/JS)
+* ¿Qué es backend? (APIs, lógica, endpoints)
+* ¿Qué es una base de datos relacional? (tablas, relaciones)
+* HTTP y REST:
+
+  * métodos GET/POST/PUT/DELETE
+  * status codes (200, 404, 401, 500…)
+* JSON: estructura y uso real en APIs
+* Modelo final de comunicación:
+
+  ```
+  Frontend → Backend → Base de datos → Backend → Frontend
+  ```
+
+**Tecnologías:**
+
+* FastAPI
+* Supabase
+* HTML + Vanilla JS
+
+---
+
+# 🟩 **LECCIÓN 2 — Preparación del Entorno de Trabajo**
+
+**Objetivo:** preparar tu máquina correctamente.
+
+**Temas concretos:**
+
+* Crear entorno virtual en Python (`python -m venv`)
+* Activarlo en Windows (`.venv\Scripts\activate`)
+* Instalar dependencias:
+
+  * `fastapi`
+  * `uvicorn`
+  * `python-dotenv`
+* Estructura recomendada de carpetas:
+
+  ```
+  backend/
+    main.py
+    requirements.txt
+    .env
+  ```
+
+**Tecnologías:**
+
+* Python 3.12
+* pip
+* FastAPI
+* Uvicorn
+
+---
+
+# 🟧 **LECCIÓN 3 — Tu Primer Backend con FastAPI**
+
+**Objetivo:** entender *de verdad* qué es un endpoint.
+
+**Temas concretos:**
+
+* Crear objeto `app = FastAPI()`
+* Entender decoradores (`@app.get`)
+* Crear endpoint `/health`
+* Ejecutar un servidor:
+
+  * `uvicorn main:app --reload`
+* Entender:
+
+  * host
+  * puerto
+  * reload
+  * qué hace uvicorn (ASGI server)
+* Diferencia entre clase vs función (`FastAPI` es clase)
+
+**Tecnologías:**
+
+* FastAPI
+* Uvicorn
+
+---
+
+# 🟫 **LECCIÓN 4 — CRUD Completo para TODOs (sin DB aún)**
+
+**Objetivo:** crear toda la API usando solo memoria (lista en Python).
+
+**Temas concretos:**
+
+* Crear modelo de datos `Todo`
+* Validación con Pydantic
+* Endpoints:
+
+  * `GET /todos`
+  * `POST /todos`
+  * `PUT /todos/{id}`
+  * `DELETE /todos/{id}`
+* Manejo de errores:
+
+  * `HTTPException`
+* Estándares REST reales
+
+**Tecnologías:**
+
+* FastAPI
+* Pydantic
+
+---
+
+# 🟨 **LECCIÓN 5 — Introducción a Supabase (PostgreSQL en la nube)**
+
+**Objetivo:** conectar tu backend con una base de datos real en la nube.
+
+**Temas concretos:**
+
+* Crear proyecto en Supabase
+* Crear tabla `todos`
+
+  ```
+  id (uuid)
+  user_id (uuid)
+  title (text)
+  done (boolean)
+  created_at (timestamp)
+  ```
+* Obtener credenciales desde la UI
+* Guardarlas en `.env`
+* Instalar `supabase-py`
+
+**Tecnologías:**
+
+* Supabase (PostgreSQL)
+* supabase-py
+
+---
+
+# 🟦 **LECCIÓN 6 — Backend + Base de Datos**
+
+**Objetivo:** reemplazar lógica en memoria por DB real.
+
+**Temas concretos:**
+
+* Conectar FastAPI con Supabase:
+
+  ```python
+  from supabase import create_client
+  ```
+* CRUD real en DB:
+
+  * `supabase.table("todos").select()`
+  * `.insert()`
+  * `.update()`
+  * `.delete()`
+* Buenas prácticas:
+
+  * Reutilizar cliente
+  * Manejar errores de DB
+  * Validaciones
+
+**Tecnologías:**
+
+* FastAPI
+* Supabase
+* supabase-py
+
+---
+
+# 🟪 **LECCIÓN 7 — Frontend Mínimo pero Funcional**
+
+**Objetivo:** hacer una página HTML que llame a tu backend.
+
+**Temas concretos:**
+
+* Archivo:
+
+  ```
+  frontend/index.html
+  frontend/app.js
+  ```
+* Formularios HTML
+* Fetch API:
+
+  ```js
+  fetch("http://localhost:8000/todos")
+  ```
+* Render dinámico de TODOs
+* Manejo de respuestas JSON
+* CORS (hablamos de esto en detalle)
+
+**Tecnologías:**
+
+* HTML
+* CSS básico
+* JavaScript
+* Fetch API
+* FastAPI CORS middleware
+
+---
+
+# 🟥 LECCIÓN 8 — Autenticación (Login real)
+
+**Objetivo:** agregar login y proteger los TODOs por usuario.
+
+**Opciones (elegimos una juntos):**
+
+1. **Supabase Auth** (más fácil)
+2. **JWT Tokens en FastAPI** (más técnico)
+
+**Temas concretos:**
+
+* Qué es un JWT
+* Qué es un access token
+* `Authorization: Bearer <token>`
+* Proteger endpoints con `Depends`
+
+**Tecnologías:**
+
+* FastAPI Auth (JWT) o Supabase Auth
+
+---
+
+# 🟫 **LECCIÓN 9 — Deploy**
+
+**Objetivo:** llevar tu backend a la nube.
+
+Opción A — **Deploy sin Docker**
+
+* Railway
+* Render
+* Supabase Functions (súper avanzado)
+
+Opción B — **Deploy con Docker**
+
+* Crear `Dockerfile`
+* Crear `docker-compose.yml`
+* Construir imagen: `docker build`
+* Subir a Railway/Render
+
+---
+
+# 🟩 **LECCIÓN 10 — Mejoras Avanzadas**
+
+**Objetivo:** transformar tu app en algo real.
+
+Ideas:
+
+* Usuario premium vs usuario normal
+* Paginación
+* Logs
+* Historial de navegación en frontend (router)
+* Tests automáticos (Pytest)
+

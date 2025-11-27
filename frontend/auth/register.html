@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="../shared/style.css" />
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+
+  <body>
+
+    <div class="auth-container">
+
+      <h1>Crear una cuenta</h1>
+
+      <form id="register-form">
+        <input 
+          type="email" 
+          id="email" 
+          class="auth-input" 
+          placeholder="Email" 
+          required 
+        />
+
+        <input 
+          type="password" 
+          id="password" 
+          class="auth-input" 
+          placeholder="Password" 
+          required 
+        />
+
+        <button type="submit" class="auth-btn">Registrarse</button>
+      </form>
+
+      <p class="auth-footer-text">
+        ¿Ya tenés una cuenta?
+        <a href="login.html" class="auth-link">Iniciar sesión</a>
+      </p>
+
+    </div>
+
+    <script type="module" src="register.js"></script>
+  </body>
+</html>

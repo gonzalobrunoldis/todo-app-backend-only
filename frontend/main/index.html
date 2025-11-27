@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" href="../shared/style.css" />
+    <meta charset="UTF-8" />
+    <title>Mi TODO App</title>
+  </head>
+  <body>
+    <button id="logout-btn">Cerrar sesión</button>
+    <h1>Mi Lista de Tareas</h1>
+    <form id="todo-form">
+        <input 
+          type="text" 
+          id="todo-input" 
+          placeholder="Nueva tarea..." 
+          required
+        />
+        <button id="submit-btn" type="submit">Agregar</button>
+      </form>
+      <h2>Pendientes</h2>
+      <div id="pending-todos"></div>
+      <h2>Completadas</h2>
+      <div id="completed-todos"></div>
+      
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
